@@ -1,9 +1,20 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+  };
+
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers, body: '' };
+  }
+
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers,
       body: JSON.stringify({ error: 'Method not allowed' })
     };
   }
@@ -14,6 +25,7 @@ exports.handler = async (event, context) => {
     if (!name || !email || !subject || !message) {
       return {
         statusCode: 400,
+        headers,
         body: JSON.stringify({ 
           success: false, 
           error: 'All fields are required' 
@@ -22,20 +34,24 @@ exports.handler = async (event, context) => {
     }
 
     const transporter = nodemailer.createTransporter({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: process.env.SMTP_SECURE === 'true',
+      host: 'smtp.zoho.com',
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
+        user: 'contact@websutech.com',
+        pass: process.env.ZOHO_APP_PASSWORD
+      },
+      tls: {
+        rejectUnauthorized: false
       }
     });
 
     const messageId = `CONTACT-${Date.now()}`;
 
     await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
-      to: process.env.ADMIN_EMAIL,
+      from: 'contact@websutech.com',
+      to: 'contact@websutech.com',
+      replyTo: email,
       subject: `New Contact: ${subject}`,
       html: `
         <h2>New Contact Message</h2>
@@ -52,6 +68,7 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 200,
+      headers,
       body: JSON.stringify({
         success: true,
         message: 'Message sent successfully',
@@ -60,11 +77,13 @@ exports.handler = async (event, context) => {
     };
 
   } catch (error) {
+    console.error('Contact function error:', error);
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({
         success: false,
-        error: 'Failed to send message'
+        error: 'Failed to send message: ' + error.message
       })
     };
   }
