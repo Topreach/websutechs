@@ -1,0 +1,11 @@
+{
+  "name": "websutech",
+  "version": "1.0.0",
+  "description": "Commodity Brokerage Website for Netlify",
+  "scripts": {
+    "build": "echo 'Static site - no build required'"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.11"
+  }
+}
