@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Inquiry | Websutech</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo/favicon.ico">
+</head>
+<body>
+    <div id="header"></div>
+    
+    <!-- Page Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <h1><i class="fas fa-shopping-cart"></i> Buyer Inquiry</h1>
+            <p>Submit your commodity requirements and connect with verified global suppliers</p>
+        </div>
+    </section>
+    
+    <!-- Form Section -->
+    <section class="section">
+        <div class="container">
+            <div class="form-card" style="max-width: 800px; margin: 0 auto;">
+                <h2 class="form-title">Submit Your Buying Requirements</h2>
+                <p class="form-subtitle">
+                    Complete this form to receive offers from our verified supplier network. 
+                    All information is confidential and protected by NDA.
+                </p>
+                
+                <form id="buyerInquiryForm" class="buyer-inquiry-form">
+                    <!-- Company Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-building"></i> Company Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="companyName" class="form-label required">Company Name</label>
+                                <input type="text" id="companyName" name="companyName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactPerson" class="form-label required">Contact Person</label>
+                                <input type="text" id="contactPerson" name="contactPerson" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="form-label required">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label required">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="country" class="form-label required">Country</label>
+                                <select id="country" name="country" class="form-select" required>
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="AE">United Arab Emirates</option>
+                                    <option value="SG">Singapore</option>
+                                    <option value="IN">India</option>
+                                    <option value="CN">China</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="JP">Japan</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="BR">Brazil</option>
+                                    <option value="RU">Russia</option>
+                                    <option value="SA">Saudi Arabia</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="companyType" class="form-label">Company Type</label>
+                                <select id="companyType" name="companyType" class="form-select">
+                                    <option value="">Select Type</option>
+                                    <option value="trader">Trader</option>
+                                    <option value="end-user">End User</option>
+                                    <option value="distributor">Distributor</option>
+                                    <option value="manufacturer">Manufacturer</option>
+                                    <option value="government">Government Entity</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Requirements -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-boxes"></i> Product Requirements</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group" style="flex:1 1 100%;">
+                                <label class="form-label required">Select Product Categories</label>
+                                <div id="categoryCheckboxes" style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                                    <label style="display:flex; align-items:center; gap:0.5rem;"><input type="checkbox" value="petroleum" class="category-checkbox"> Petroleum</label>
+                                    <label style="display:flex; align-items:center; gap:0.5rem;"><input type="checkbox" value="metals" class="category-checkbox"> Precious Metals</label>
+                                    <label style="display:flex; align-items:center; gap:0.5rem;"><input type="checkbox" value="diamonds" class="category-checkbox"> Diamonds</label>
+                                    <label style="display:flex; align-items:center; gap:0.5rem;"><input type="checkbox" value="industrial" class="category-checkbox"> Industrial Materials</label>
+                                </div>
+                                <div style="margin-top:0.5rem; font-size:0.9rem; color:var(--muted);">You can choose multiple categories. The product list below will update accordingly.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productCategory" class="form-label">Primary Product Category</label>
+                                <select id="productCategory" name="productCategory" class="form-select" onchange="updateProductOptionsFromSelect()">
+                                    <option value="">Select Primary Category (optional)</option>
+                                    <option value="petroleum">Petroleum Products</option>
+                                    <option value="metals">Precious Metals</option>
+                                    <option value="diamonds">Diamonds</option>
+                                    <option value="industrial">Industrial Materials</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="specificProduct" class="form-label required">Specific Product(s)</label>
+                                <select id="specificProduct" name="specificProduct" class="form-select" multiple size="6" required>
+                                    <!-- Petroleum -->
+                                    <optgroup label="Petroleum">
+                                        <option value="EN590 Diesel (10ppm)">EN590 Diesel (10ppm)</option>
+                                        <option value="Jet A-1 Aviation Fuel">Jet A-1 Aviation Fuel</option>
+                                        <option value="D2 Gas Oil">D2 Gas Oil</option>
+                                        <option value="LPG">LPG</option>
+                                    </optgroup>
+                                    <!-- Metals -->
+                                    <optgroup label="Precious Metals">
+                                        <option value="Gold">Gold</option>
+                                        <option value="Silver">Silver</option>
+                                        <option value="Platinum">Platinum</option>
+                                    </optgroup>
+                                    <!-- Diamonds -->
+                                    <optgroup label="Diamonds">
+                                        <option value="Polished Diamond">Polished Diamond</option>
+                                        <option value="Rough Diamond">Rough Diamond</option>
+                                    </optgroup>
+                                    <!-- Industrial -->
+                                    <optgroup label="Industrial Materials">
+                                        <option value="Aluminum Ingots">Aluminum Ingots</option>
+                                        <option value="Copper Cathode">Copper Cathode</option>
+                                        <option value="Steel Billets">Steel Billets</option>
+                                    </optgroup>
+                                    <!-- Other -->
+                                    <option value="Other">Others </option>
+                                </select>
+                                <div style="font-size:0.85rem; color:var(--muted); margin-top:0.5rem;">(Hold Ctrl/Cmd to select multiple)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="quantity" class="form-label required">Quantity Required</label>
+                                <input type="text" id="quantity" name="quantity" class="form-input" placeholder="e.g., 10,000 MT" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="targetPrice" class="form-label">Target Price (USD)</label>
+                                <input type="text" id="targetPrice" name="targetPrice" class="form-input" placeholder="e.g., $500/MT">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deliveryLocation" class="form-label required">Delivery Location</label>
+                            <input type="text" id="deliveryLocation" name="deliveryLocation" class="form-input" placeholder="Port/City, Country" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Trading Terms -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-handshake"></i> Trading Terms</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="paymentTerms" class="form-label">Preferred Payment Terms</label>
+                                <select id="paymentTerms" name="paymentTerms" class="form-select">
+                                    <option value="">Select Payment Terms</option>
+                                    <option value="LC">Letter of Credit (LC)</option>
+                                    <option value="DLC">Documentary Letter of Credit (DLC)</option>
+                                    <option value="SBLC">Standby Letter of Credit (SBLC)</option>
+                                    <option value="TT">Telegraphic Transfer (TT)</option>
+                                    <option value="CAD">Cash Against Documents (CAD)</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="urgency" class="form-label">Urgency Level</label>
+                                <select id="urgency" name="urgency" class="form-select">
+                                    <option value="normal">Normal (2-4 weeks)</option>
+                                    <option value="urgent">Urgent (1-2 weeks)</option>
+                                    <option value="immediate">Immediate (Within 1 week)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additionalRequirements" class="form-label">Additional Requirements</label>
+                            <textarea id="additionalRequirements" name="additionalRequirements" class="form-textarea" 
+                                placeholder="Specify any additional requirements, certifications needed, quality standards, etc."></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Legal Agreement -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-shield-alt"></i> Legal Agreement</h3>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="ndaAgreed" name="ndaAgreed" required>
+                            <label for="ndaAgreed">
+                                I agree to sign a Mutual Non-Disclosure Agreement (NDA) before receiving any offers or sensitive information.
+                            </label>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="termsAgreed" name="termsAgreed" required>
+                            <label for="termsAgreed">
+                                I agree to the <a href="../terms.html" target="_blank">Terms of Service</a> and 
+                                <a href="../privacy-policy.html" target="_blank">Privacy Policy</a>.
+                            </label>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="complianceAgreed" name="complianceAgreed" required>
+                            <label for="complianceAgreed">
+                                I confirm that my company complies with all applicable laws and regulations, 
+                                including anti-money laundering (AML) and know-your-customer (KYC) requirements.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="window.history.back()">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Submit Inquiry
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <div id="footer"></div>
+    
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Product options by category
+        const productOptions = {
+            petroleum: [
+                'EN590 Diesel (10ppm)',
+                'Jet A-1 Aviation Fuel',
+                'D2 Gas Oil',
+                'LPG (Liquefied Petroleum Gas)'
+            ],
+            metals: [
+                'Gold',
+                'Silver',
+                'Platinum'
+            ],
+            diamonds: [
+                'Polished Diamond',
+                'Rough Diamond'
+            ],
+            industrial: [
+                'Aluminum Ingots',
+                'Copper Cathode',
+                'Steel Billets'
+            ]
+        };
+        
+        // Populate product options based on selected categories (checkboxes) or primary select
+        function updateProductOptions() {
+            const checked = Array.from(document.querySelectorAll('.category-checkbox:checked')).map(cb => cb.value);
+            const productSelect = document.getElementById('specificProduct');
+            productSelect.innerHTML = '';
+
+            const added = new Set();
+            if (checked.length === 0) {
+                // If no checkboxes checked, try primary select
+                const primary = document.getElementById('productCategory').value;
+                if (primary && productOptions[primary]) {
+                    checked.push(primary);
+                } else {
+                    // No category selected: show all available products so the buyer can choose directly
+                    checked = Object.keys(productOptions);
+                }
+            }
+
+            // Build grouped options for better UX
+            checked.forEach(cat => {
+                const list = productOptions[cat] || [];
+                if (list.length === 0) return;
+
+                const optgroup = document.createElement('optgroup');
+                // Friendly label: capitalize first letter and replace dash with space
+                optgroup.label = cat.charAt(0).toUpperCase() + cat.slice(1).replace(/-/g, ' ');
+
+                list.forEach(p => {
+                    if (!added.has(p)) {
+                        const option = document.createElement('option');
+                        option.value = p;
+                        option.textContent = p;
+                        optgroup.appendChild(option);
+                        added.add(p);
+                    }
+                });
+
+                // Only append optgroup if it has options
+                if (optgroup.children.length) productSelect.appendChild(optgroup);
+            });
+
+            // If for any reason no options were added, show a fallback message
+            if (productSelect.children.length === 0) {
+                const placeholder = document.createElement('option');
+                placeholder.value = '';
+                placeholder.textContent = 'No products available';
+                productSelect.appendChild(placeholder);
+            }
+
+            // Always add an 'Other' option so users can specify in Additional Requirements
+            if (!Array.from(productSelect.options).some(o => o.value === 'Other')) {
+                const otherOpt = document.createElement('option');
+                otherOpt.value = 'Other';
+                otherOpt.textContent = 'Other — specify in Additional Requirements';
+                productSelect.appendChild(otherOpt);
+            }
+        }
+
+        function updateProductOptionsFromSelect() {
+            // Keep checkboxes in sync when primary select is used
+            const primary = document.getElementById('productCategory').value;
+            if (!primary) return;
+            // Check the corresponding checkbox
+            const cb = document.querySelector(`.category-checkbox[value="${primary}"]`);
+            if (cb) cb.checked = true;
+            updateProductOptions();
+        }
+
+        // Wire up category checkbox change handlers and initialize product options
+        document.querySelectorAll('.category-checkbox').forEach(cb => cb.addEventListener('change', updateProductOptions));
+        // Also update when the page loads in case of prefilled values
+        updateProductOptions();
+        
+        // Form submission
+        document.getElementById('buyerInquiryForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Gather form data manually to support multiple selected products and categories
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData.entries());
+
+                // product categories (checkboxes)
+                const selectedCategories = Array.from(document.querySelectorAll('.category-checkbox:checked')).map(cb => cb.value);
+                if (selectedCategories.length) data.productCategories = selectedCategories;
+                // primary category
+                const primary = document.getElementById('productCategory').value;
+                if (primary) data.productCategory = primary;
+
+                // specific products (multiple select)
+                const specificSelect = document.getElementById('specificProduct');
+                const selectedProducts = Array.from(specificSelect.selectedOptions).map(o => o.value).filter(v => v);
+                data.specificProducts = selectedProducts;
+
+                // basic validation: require at least one specific product
+                if (!data.specificProducts || data.specificProducts.length === 0) {
+                    alert('Please select at least one specific product you require.');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    return;
+                }
+                
+                const response = await fetch('/api/inquiries/buyer', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show success message
+                    alert(`Inquiry submitted successfully!\\n\\nReference ID: ${result.inquiryId}\\n\\nNext Steps:\\n${result.nextSteps.join('\\n')}`);
+                    
+                    // Reset form
+                    this.reset();
+                    updateProductOptions();
+                    
+                    // Redirect to thank you page or home
+                    window.location.href = '/?inquiry=success';
+                } else {
+                    throw new Error(result.message || 'Submission failed');
+                }
+                
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('Failed to submit inquiry. Please try again or contact us directly.');
+            } finally {
+                // Restore button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Load header and footer
+        Promise.all([
+            fetch('../templates/header.html').then(r => r.text()),
+            fetch('../templates/footer.html').then(r => r.text())
+        ]).then(([header, footer]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('footer').innerHTML = footer;
+        }).catch(error => {
+            console.log('Error loading templates:', error);
+        });
+    </script>
+    
+    <style>
+        .form-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .buyer-inquiry-form {
+            max-width: none;
+        }
+        
+        .form-checkbox label {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .form-checkbox a {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        .form-checkbox a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</body>
+</html>

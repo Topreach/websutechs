@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precious Metals | Products | Websutech</title>
+    <meta name="description" content="Gold, silver and platinum bullion and refined products for trading and industrial use. Full certification and logistics support." />
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/logo/favicon.ico">
+</head>
+<body>
+    <div id="header"></div>
+
+    <section class="page-hero">
+        <div class="container page-hero-inner" style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+            <div class="hero-image" style="flex:1 1 420px; max-width:680px;">
+                <img src="../../assets/images/products/petroleum/petroleum-hero.svg" alt="Precious metals" style="width:100%; height:auto; display:block; border-radius:8px; box-shadow:var(--shadow-sm);">
+            </div>
+            <div style="flex:1 1 320px; min-width:260px;">
+                <h1>Precious Metals</h1>
+                <p>Trading refined gold, silver and platinum with verified origin and full assay documentation. Competitive pricing and global delivery.</p>
+                <p style="margin-top:1rem;"><a href="../../forms/buyer-inquiry.html" class="btn btn-secondary">Request Quote</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Precious Metals</h2>
+            <p class="section-subtitle">We supply bullion, refined bars, and industrial-grade metals with full testing and documentation.</p>
+
+            <div class="product-categories">
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #b76e1b, #e6b800);">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Gold</h3>
+                    <p>LBMA-standard gold bars, minted and cast options, delivered with assay and COA.</p>
+                    <a href="gold.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #9ca3af, #6b7280);">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Silver</h3>
+                    <p>Refined silver bars and industrial silver with assay and packaging options.</p>
+                    <a href="silver.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #c6c6c6, #9ca3af);">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Platinum</h3>
+                    <p>Platinum bars and refined products for industrial and investment use.</p>
+                    <a href="platinum.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // Load header and footer templates
+        Promise.all([
+            fetch('../../templates/header.html').then(r => r.text()),
+            fetch('../../templates/footer.html').then(r => r.text())
+        ]).then(([header, footer]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('footer').innerHTML = footer;
+        }).catch(error => console.error('Error loading templates:', error));
+    </script>
+</body>
+</html>

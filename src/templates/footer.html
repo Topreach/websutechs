@@ -1,0 +1,140 @@
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color: white; margin-bottom: 1rem;">
+                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #d4af37, #ffffff); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #1a365d; font-weight: bold;">W</div>
+                    <span>WEBSUTECH</span>
+                </div>
+                <p class="footer-description">
+                    Global commodity brokerage specializing in petroleum, metals, diamonds, 
+                    and industrial materials. Connecting verified buyers with trusted suppliers worldwide.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="services.html"><i class="fas fa-chevron-right"></i> Our Services</a></li>
+                    <li><a href="process.html"><i class="fas fa-chevron-right"></i> Trading Process</a></li>
+                    <li><a href="compliance.html"><i class="fas fa-chevron-right"></i> Compliance</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="products/petroleum/"><i class="fas fa-chevron-right"></i> Petroleum</a></li>
+                    <li><a href="products/precious-metals/"><i class="fas fa-chevron-right"></i> Precious Metals</a></li>
+                    <li><a href="products/diamonds/"><i class="fas fa-chevron-right"></i> Diamonds</a></li>
+                    <li><a href="products/industrial/"><i class="fas fa-chevron-right"></i> Industrial</a></li>
+                    <li><a href="products.html"><i class="fas fa-chevron-right"></i> All Products</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> contact@websutech.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-phone"></i> +44 20 1234 5678</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Global Headquarters</li>
+                    <li>Dubai, UAE | Singapore | London, UK</li>
+                </ul>
+                <a href="contact.html" class="btn-footer">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </a>
+                
+                <div class="newsletter-form">
+                    <h4 style="margin-top: 1.5rem;">Newsletter</h4>
+                    <input type="email" placeholder="Your email address" id="newsletterEmail">
+                    <button id="newsletterSubscribe">Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-left">
+                <p>&copy; <span id="currentYear"></span> Websutech. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+            <div class="footer-bottom-right">
+                <p>Certified & Compliant</p>
+                <div class="certifications">
+                    <span>ISO 9001</span>
+                    <span>AML/KYC</span>
+                    <span>FCPA</span>
+                    <span>GDPR</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Set current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Newsletter subscription
+    document.getElementById('newsletterSubscribe').addEventListener('click', function() {
+        const email = document.getElementById('newsletterEmail').value;
+        if (email && email.includes('@')) {
+            fetch('/api/contact/newsletter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Subscribed successfully!');
+                document.getElementById('newsletterEmail').value = '';
+            })
+            .catch(error => {
+                console.error('Subscription error:', error);
+                alert('Subscription failed. Please try again.');
+            });
+        } else {
+            alert('Please enter a valid email address.');
+        }
+    });
+    
+    // Back to top functionality
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+<!-- Product Detail Modal (shared) -->
+<div id="productDetailModal" class="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:10050; align-items:center; justify-content:center;">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="productDetailTitle" style="background:white; border-radius:8px; max-width:900px; width:95%; max-height:90vh; overflow:auto; box-shadow:var(--shadow-lg); padding:1rem; position:relative;">
+        <button id="productDetailClose" aria-label="Close" style="position:absolute; right:12px; top:12px; background:none; border:none; font-size:1.25rem; cursor:pointer;">&times;</button>
+        <div id="productDetailContent">
+            <!-- Content injected dynamically -->
+            <div style="text-align:center; padding:2rem 1rem; color:var(--dark-gray);">Loading...</div>
+        </div>
+    </div>
+</div>

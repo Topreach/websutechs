@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamonds | Products | Websutech</title>
+    <meta name="description" content="Rough and polished diamonds for industrial and jewelry markets. Sourced from verified suppliers with full certification." />
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/logo/favicon.ico">
+</head>
+<body>
+    <div id="header"></div>
+
+    <section class="page-hero">
+        <div class="container page-hero-inner" style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+            <div class="hero-image" style="flex:1 1 420px; max-width:680px;">
+                <img src="../../assets/images/products/petroleum/petroleum-hero.svg" alt="Diamonds" style="width:100%; height:auto; display:block; border-radius:8px; box-shadow:var(--shadow-sm);">
+            </div>
+            <div style="flex:1 1 320px; min-width:260px;">
+                <h1>Diamonds</h1>
+                <p>We supply high-quality rough and polished diamonds for both industrial and jewelry markets. Full provenance and certification provided.</p>
+                <p style="margin-top:1rem;"><a href="../../forms/buyer-inquiry.html" class="btn btn-secondary">Request Quote</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Diamond Products</h2>
+            <p class="section-subtitle">Available cuts and grades with inspection reports and compliance documentation.</p>
+
+            <div class="product-categories">
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #6b7280, #374151);">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Polished Diamond</h3>
+                    <p>Certified polished diamonds for jewelry, available in various cuts, colors and clarities.</p>
+                    <a href="polished-diamond.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #6b7280, #374151);">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Rough Diamond</h3>
+                    <p>Natural rough diamonds suitable for cutting, polishing or industrial use — inspected and graded.</p>
+                    <a href="rough-diamond.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // Load header and footer templates
+        Promise.all([
+            fetch('../../templates/header.html').then(r => r.text()),
+            fetch('../../templates/footer.html').then(r => r.text())
+        ]).then(([header, footer]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('footer').innerHTML = footer;
+        }).catch(error => console.error('Error loading templates:', error));
+    </script>
+</body>
+</html>

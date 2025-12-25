@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petroleum Products | Websutech</title>
+    <meta name="description" content="Petroleum product listings — EN590 diesel, Jet A-1, D2 gas oil, LPG. Global supply and trading." />
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/logo/favicon.ico">
+</head>
+<body>
+    <div id="header"></div>
+
+    <section class="page-hero">
+        <div class="container page-hero-inner" style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+            <div class="hero-image" style="flex:1 1 420px; max-width:680px;">
+                <img src="../../assets/images/products/petroleum/petroleum-hero.svg" alt="Petroleum products" style="width:100%; height:auto; display:block; border-radius:8px; box-shadow:var(--shadow-sm);">
+            </div>
+            <div style="flex:1 1 320px; min-width:260px;">
+                <h1>Petroleum Products</h1>
+                <p>Explore our portfolio of petroleum products — diesel, jet fuel, gas oil and LPG from verified suppliers worldwide.</p>
+                <p style="margin-top:1rem;"><a href="/forms/buyer-inquiry.html" class="btn btn-secondary">Request Quote</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Petroleum Portfolio</h2>
+            <p class="section-subtitle">We source compliant petroleum products with full documentation and flexible delivery terms.</p>
+
+            <div class="product-categories">
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #1a6a9e, #0d4d75);">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h3>EN590 Diesel (10ppm)</h3>
+                    <p>Ultra Low Sulfur Diesel meeting EN590 specifications for on-road and industrial use.</p>
+                    <a href="en590.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #1a6a9e, #0d4d75);">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Jet A-1 Aviation Fuel</h3>
+                    <p>Jet A-1 compliant turbine fuel for commercial and military aircraft.</p>
+                    <a href="jet-a1.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #1a6a9e, #0d4d75);">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h3>D2 Gas Oil</h3>
+                    <p>High-quality gas oil suitable for industrial burners and heating applications.</p>
+                    <a href="d2.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #1a6a9e, #0d4d75);">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>LPG</h3>
+                    <p>Liquefied petroleum gas for residential, commercial and industrial applications.</p>
+                    <a href="lpg.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // Load header and footer templates
+        Promise.all([
+            fetch('../../templates/header.html').then(r => r.text()),
+            fetch('../../templates/footer.html').then(r => r.text())
+        ]).then(([header, footer]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('footer').innerHTML = footer;
+        }).catch(error => console.error('Error loading templates:', error));
+    </script>
+</body>
+</html>

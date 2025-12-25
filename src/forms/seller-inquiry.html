@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Inquiry | Websutech</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo/favicon.ico">
+</head>
+<body>
+    <div id="header"></div>
+    
+    <!-- Page Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <h1><i class="fas fa-warehouse"></i> Seller Registration</h1>
+            <p>Join our verified supplier network and connect with global buyers</p>
+        </div>
+    </section>
+    
+    <!-- Form Section -->
+    <section class="section">
+        <div class="container">
+            <div class="form-card" style="max-width: 800px; margin: 0 auto;">
+                <h2 class="form-title">Register as a Verified Supplier</h2>
+                <p class="form-subtitle">
+                    Complete this registration to join our global supplier network. 
+                    All suppliers undergo strict verification and compliance checks.
+                </p>
+                
+                <form id="sellerInquiryForm" class="seller-inquiry-form">
+                    <!-- Company Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-building"></i> Company Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="companyName" class="form-label required">Company Name</label>
+                                <input type="text" id="companyName" name="companyName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactPerson" class="form-label required">Contact Person</label>
+                                <input type="text" id="contactPerson" name="contactPerson" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="form-label required">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label required">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="country" class="form-label required">Country of Operation</label>
+                                <select id="country" name="country" class="form-select" required>
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="AE">United Arab Emirates</option>
+                                    <option value="SG">Singapore</option>
+                                    <option value="IN">India</option>
+                                    <option value="CN">China</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="JP">Japan</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="BR">Brazil</option>
+                                    <option value="RU">Russia</option>
+                                    <option value="SA">Saudi Arabia</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="yearsInBusiness" class="form-label">Years in Business</label>
+                                <select id="yearsInBusiness" name="yearsInBusiness" class="form-select">
+                                    <option value="">Select Range</option>
+                                    <option value="1-2">1-2 years</option>
+                                    <option value="3-5">3-5 years</option>
+                                    <option value="6-10">6-10 years</option>
+                                    <option value="11-20">11-20 years</option>
+                                    <option value="20+">20+ years</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-boxes"></i> Product Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productCategory" class="form-label required">Product Category</label>
+                                <select id="productCategory" name="productCategory" class="form-select" required onchange="updateProductOptions()">
+                                    <option value="">Select Category</option>
+                                    <option value="petroleum">Petroleum Products</option>
+                                    <option value="metals">Precious Metals</option>
+                                    <option value="diamonds">Diamonds</option>
+                                    <option value="industrial">Industrial Materials</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="specificProduct" class="form-label required">Specific Product</label>
+                                <select id="specificProduct" name="specificProduct" class="form-select" required>
+                                    <option value="">Select Product Category First</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="availableQuantity" class="form-label required">Available Quantity</label>
+                                <input type="text" id="availableQuantity" name="availableQuantity" class="form-input" placeholder="e.g., 50,000 MT/month" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="priceRange" class="form-label">Price Range (USD)</label>
+                                <input type="text" id="priceRange" name="priceRange" class="form-input" placeholder="e.g., $450-500/MT">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="origin" class="form-label required">Product Origin</label>
+                                <input type="text" id="origin" name="origin" class="form-input" placeholder="Country/Region of origin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="minOrderQuantity" class="form-label">Minimum Order Quantity</label>
+                                <input type="text" id="minOrderQuantity" name="minOrderQuantity" class="form-input" placeholder="e.g., 1,000 MT">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="specifications" class="form-label required">Product Specifications</label>
+                            <textarea id="specifications" name="specifications" class="form-textarea" 
+                                placeholder="Detailed product specifications, quality standards, technical parameters, etc." required></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Certifications & Compliance -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-certificate"></i> Certifications & Compliance</h3>
+                        
+                        <div class="form-group">
+                            <label for="certifications" class="form-label required">Available Certifications</label>
+                            <textarea id="certifications" name="certifications" class="form-textarea" 
+                                placeholder="List all relevant certifications (ISO, SGS, BV, etc.)" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="exportLicense" class="form-label">Export License</label>
+                                <select id="exportLicense" name="exportLicense" class="form-select">
+                                    <option value="">Select Status</option>
+                                    <option value="yes">Yes, we have export license</option>
+                                    <option value="no">No, but can obtain</option>
+                                    <option value="not-required">Not required for our products</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="complianceStandards" class="form-label">Compliance Standards</label>
+                                <select id="complianceStandards" name="complianceStandards" class="form-select">
+                                    <option value="">Select Standards</option>
+                                    <option value="iso9001">ISO 9001</option>
+                                    <option value="iso14001">ISO 14001</option>
+                                    <option value="ohsas18001">OHSAS 18001</option>
+                                    <option value="multiple">Multiple Standards</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trading Terms -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-handshake"></i> Trading Terms</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="deliveryTerms" class="form-label">Delivery Terms</label>
+                                <select id="deliveryTerms" name="deliveryTerms" class="form-select">
+                                    <option value="">Select Terms</option>
+                                    <option value="FOB">FOB (Free on Board)</option>
+                                    <option value="CIF">CIF (Cost, Insurance, Freight)</option>
+                                    <option value="CFR">CFR (Cost and Freight)</option>
+                                    <option value="EXW">EXW (Ex Works)</option>
+                                    <option value="DDP">DDP (Delivered Duty Paid)</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="paymentTerms" class="form-label">Preferred Payment Terms</label>
+                                <select id="paymentTerms" name="paymentTerms" class="form-select">
+                                    <option value="">Select Payment Terms</option>
+                                    <option value="LC">Letter of Credit (LC)</option>
+                                    <option value="DLC">Documentary Letter of Credit (DLC)</option>
+                                    <option value="SBLC">Standby Letter of Credit (SBLC)</option>
+                                    <option value="TT">Telegraphic Transfer (TT)</option>
+                                    <option value="CAD">Cash Against Documents (CAD)</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="deliveryTime" class="form-label">Delivery Timeframe</label>
+                                <input type="text" id="deliveryTime" name="deliveryTime" class="form-input" placeholder="e.g., 15-30 days after LC">
+                            </div>
+                            <div class="form-group">
+                                <label for="portOfLoading" class="form-label">Port of Loading</label>
+                                <input type="text" id="portOfLoading" name="portOfLoading" class="form-input" placeholder="Primary loading port">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additionalInfo" class="form-label">Additional Information</label>
+                            <textarea id="additionalInfo" name="additionalInfo" class="form-textarea" 
+                                placeholder="Any additional information about your company, products, or trading capabilities"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Legal Agreement -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-shield-alt"></i> Legal Agreement & Compliance</h3>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="ndaAgreed" name="ndaAgreed" required>
+                            <label for="ndaAgreed">
+                                I agree to sign a Mutual Non-Disclosure Agreement (NDA) and maintain confidentiality of all shared information.
+                            </label>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="termsAgreed" name="termsAgreed" required>
+                            <label for="termsAgreed">
+                                I agree to the <a href="../terms.html" target="_blank">Terms of Service</a> and 
+                                <a href="../privacy-policy.html" target="_blank">Privacy Policy</a>.
+                            </label>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="complianceAgreed" name="complianceAgreed" required>
+                            <label for="complianceAgreed">
+                                I confirm that my company complies with all applicable laws, regulations, and international trade requirements, 
+                                including anti-money laundering (AML), know-your-customer (KYC), and export control regulations.
+                            </label>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="verificationAgreed" name="verificationAgreed" required>
+                            <label for="verificationAgreed">
+                                I understand that my company will undergo verification processes including document review, 
+                                background checks, and compliance verification before being approved as a supplier.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="window.history.back()">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Submit Registration
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <div id="footer"></div>
+    
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Product options by category (same as buyer form)
+        const productOptions = {
+            petroleum: [
+                'EN590 Diesel',
+                'Jet A-1 Aviation Fuel',
+                'D2 Gas Oil',
+                'LPG (Liquefied Petroleum Gas)',
+                'LNG (Liquefied Natural Gas)',
+                'Crude Oil',
+                'Mazut M100',
+                'Gasoline',
+                'Other Petroleum Product'
+            ],
+            metals: [
+                'Gold Bars',
+                'Gold Bullion',
+                'Silver Ingots',
+                'Platinum',
+                'Palladium',
+                'Rhodium',
+                'Other Precious Metal'
+            ],
+            diamonds: [
+                'Rough Diamonds',
+                'Polished Diamonds',
+                'Industrial Diamonds',
+                'Gemstones',
+                'Other Diamond Product'
+            ],
+            industrial: [
+                'Copper Cathodes',
+                'Aluminum Ingots',
+                'Steel Billets',
+                'Iron Ore',
+                'Cement',
+                'Coal',
+                'Other Industrial Material'
+            ]
+        };
+        
+        function updateProductOptions() {
+            const category = document.getElementById('productCategory').value;
+            const productSelect = document.getElementById('specificProduct');
+            
+            // Clear existing options
+            productSelect.innerHTML = '<option value="">Select Product</option>';
+            
+            if (category && productOptions[category]) {
+                productOptions[category].forEach(product => {
+                    const option = document.createElement('option');
+                    option.value = product;
+                    option.textContent = product;
+                    productSelect.appendChild(option);
+                });
+            }
+        }
+        
+        // Form submission
+        document.getElementById('sellerInquiryForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                const response = await fetch('/api/inquiries/seller', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show success message
+                    alert(`Registration submitted successfully!\\n\\nReference ID: ${result.inquiryId}\\n\\nNext Steps:\\n${result.nextSteps.join('\\n')}\\n\\nRequired Documents:\\n${result.requiredDocuments.join('\\n')}`);
+                    
+                    // Reset form
+                    this.reset();
+                    updateProductOptions();
+                    
+                    // Redirect to thank you page or home
+                    window.location.href = '/?registration=success';
+                } else {
+                    throw new Error(result.message || 'Registration failed');
+                }
+                
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('Failed to submit registration. Please try again or contact us directly.');
+            } finally {
+                // Restore button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Load header and footer
+        Promise.all([
+            fetch('../templates/header.html').then(r => r.text()),
+            fetch('../templates/footer.html').then(r => r.text())
+        ]).then(([header, footer]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('footer').innerHTML = footer;
+        }).catch(error => {
+            console.log('Error loading templates:', error);
+        });
+    </script>
+    
+    <style>
+        .form-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .seller-inquiry-form {
+            max-width: none;
+        }
+        
+        .form-checkbox label {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .form-checkbox a {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        .form-checkbox a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</body>
+</html>

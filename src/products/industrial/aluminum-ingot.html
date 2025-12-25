@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Under Development | Websutech</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="header"></div>
+    
+    <section class="page-hero">
+        <div class="container">
+            <h1>Coming Soon</h1>
+            <p>This page is currently under development</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="text-center">
+                <div style="font-size: 5rem; color: var(--secondary-color); margin-bottom: 2rem;">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h2>Page Under Construction</h2>
+                <p>We're working hard to bring you this content. Please check back soon!</p>
+                <a href="/" class="btn btn-primary mt-3">
+                    <i class="fas fa-home"></i> Return to Homepage
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <div id="footer"></div>
+    
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        fetch('../../templates/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+        
+        fetch('../../templates/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+</html>

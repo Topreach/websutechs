@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Websutech</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .coming-soon-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .coming-soon-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .coming-soon-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .coming-soon-icon {
+            font-size: 6rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .coming-soon-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .coming-soon-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .coming-soon-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 8px;
+            border-radius: 4px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: var(--secondary-color);
+            height: 100%;
+            width: 75%;
+            border-radius: 4px;
+            animation: progressAnimation 3s ease-in-out infinite;
+        }
+        
+        .features-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-preview {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-preview i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-preview h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-preview p {
+            opacity: 0.8;
+            margin: 0;
+        }
+        
+        .notify-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            margin: 3rem 0;
+        }
+        
+        .notify-form h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .notify-form p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+        
+        .notify-form .form-group {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .notify-form input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: var(--radius-md);
+        }
+        
+        .notify-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .notify-form button {
+            padding: 12px 24px;
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .notify-form button:hover {
+            background: #c19a2b;
+            transform: translateY(-2px);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes progressAnimation {
+            0% { width: 65%; }
+            50% { width: 85%; }
+            100% { width: 75%; }
+        }
+        
+        @media (max-width: 768px) {
+            .coming-soon-title {
+                font-size: 2.5rem;
+            }
+            
+            .coming-soon-icon {
+                font-size: 4rem;
+            }
+            
+            .notify-form .form-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="coming-soon-hero">
+        <div class="container">
+            <div class="coming-soon-content">
+                <div class="coming-soon-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                
+                <h1 class="coming-soon-title">Coming Soon</h1>
+                <p class="coming-soon-subtitle">Something Amazing is Being Built</p>
+                <p class="coming-soon-description">
+                    We're working hard to bring you an exceptional commodity trading experience. 
+                    Our new features will revolutionize how you connect with global suppliers and buyers.
+                </p>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p style="opacity: 0.7; margin-bottom: 3rem;">Development Progress: 75% Complete</p>
+                
+                <div class="features-preview">
+                    <div class="feature-preview">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Enhanced Security</h3>
+                        <p>Advanced KYC and compliance verification</p>
+                    </div>
+                    
+                    <div class="feature-preview">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Real-time Analytics</h3>
+                        <p>Market insights and trading analytics</p>
+                    </div>
+                    
+                    <div class="feature-preview">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Experience</h3>
+                        <p>Trade on-the-go with our mobile app</p>
+                    </div>
+                </div>
+                
+                <div class="notify-form">
+                    <h3>Get Notified When We Launch</h3>
+                    <p>Be the first to know when this feature becomes available</p>
+                    <div class="form-group">
+                        <input type="email" placeholder="Enter your email address" id="notifyEmail">
+                        <button onclick="subscribeNotification()">
+                            <i class="fas fa-bell"></i> Notify Me
+                        </button>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 3rem;">
+                    <a href="/" class="btn btn-outline" style="color: white; border-color: white; margin-right: 1rem;">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                    <a href="/contact.html" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function subscribeNotification() {
+            const email = document.getElementById('notifyEmail').value;
+            if (email && email.includes('@')) {
+                fetch('/api/contact/newsletter', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, source: 'coming-soon' })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Thank you! We\'ll notify you when this feature is ready.');
+                    document.getElementById('notifyEmail').value = '';
+                })
+                .catch(error => {
+                    console.error('Subscription error:', error);
+                    alert('Subscription failed. Please try again or contact us directly.');
+                });
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+        
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bar on load
+            setTimeout(() => {
+                document.querySelector('.progress-fill').style.width = '75%';
+            }, 1000);
+            
+            // Add floating animation to icon
+            const icon = document.querySelector('.coming-soon-icon');
+            setInterval(() => {
+                icon.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    icon.style.transform = 'translateY(0)';
+                }, 1000);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Products | Websutech</title>
+    <meta name="description" content="Industrial materials including aluminum ingots, copper cathodes and steel billets — sourced from verified producers with global logistics." />
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/logo/favicon.ico">
+</head>
+<body>
+    <div id="header"></div>
+
+    <section class="page-hero">
+        <div class="container page-hero-inner" style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+            <div class="hero-image" style="flex:1 1 420px; max-width:680px;">
+                <img src="../../assets/images/products/petroleum/petroleum-hero.svg" alt="Industrial products" style="width:100%; height:auto; display:block; border-radius:8px; box-shadow:var(--shadow-sm);">
+            </div>
+            <div style="flex:1 1 320px; min-width:260px;">
+                <h1>Industrial Materials</h1>
+                <p>High-grade industrial materials including aluminum ingots, copper cathodes and steel billets. Supplier verification and logistics support included.</p>
+                <p style="margin-top:1rem;"><a href="../../forms/buyer-inquiry.html" class="btn btn-secondary">Request Quote</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Industrial Products</h2>
+            <p class="section-subtitle">Materials for manufacturing and heavy industry with available inspection and transport documentation.</p>
+
+            <div class="product-categories">
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #2b6a3f, #1a5a3a);">
+                        <i class="fas fa-boxes-stacked"></i>
+                    </div>
+                    <h3>Aluminum Ingots</h3>
+                    <p>Primary aluminum ingots for casting and extrusion, available in standard grades.</p>
+                    <a href="aluminum-ingot.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #b35b2b, #7a3f2b);">
+                        <i class="fas fa-charging-station"></i>
+                    </div>
+                    <h3>Copper Cathode</h3>
+                    <p>High-purity copper cathodes for refining and manufacturing applications.</p>
+                    <a href="copper-cathode.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon" style="background: linear-gradient(135deg, #374151, #1f2937);">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Steel Billets</h3>
+                    <p>Hot-rolled steel billets for downstream steel processing and manufacturing.</p>
+                    <a href="steel-billets.html" class="btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // Load header and footer templates
+        Promise.all([
+            fetch('../../templates/header.html').then(r => r.text()),
+            fetch('../../templates/footer.html').then(r => r.text())
+        ]).then(([header, footer]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('footer').innerHTML = footer;
+        }).catch(error => console.error('Error loading templates:', error));
+    </script>
+</body>
+</html>

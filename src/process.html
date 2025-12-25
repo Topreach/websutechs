@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Process | Websutech</title>
+    <meta name="description" content="Our verified trading process: inquiry, verification, inspection, contracting, banking, logistics and delivery. Clear steps and documentation to reduce risk and speed up deals." />
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="container page-hero-inner" style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+            <div style="flex:1 1 420px; max-width:640px;">
+                <img src="assets/images/products/petroleum/petroleum-hero.svg" alt="Trading process" style="width:100%; height:auto; display:block; border-radius:8px; box-shadow:var(--shadow-sm);">
+            </div>
+            <div style="flex:1 1 320px; min-width:260px;">
+                <h1>Our Trading & Supply Process</h1>
+                <p>We follow a clear, documented trading process to protect buyers and suppliers — from initial inquiry through delivery and post-sale support.</p>
+                <p style="margin-top:1rem; display:flex; gap:0.75rem;">
+                    <a href="forms/buyer-inquiry.html" class="btn btn-secondary">Request Quote</a>
+                    <a href="process-detail.html" class="btn btn-outline btn-link btn-link" style="align-self:center;" role="button">View Detailed Process</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview steps -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Step-by-step Overview</h2>
+            <p class="section-subtitle">A concise summary of the key stages we follow to complete a trade safely and efficiently.</p>
+
+            <div class="process-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-top:1.5rem;">
+                <div class="process-card">
+                    <div class="process-icon"><i class="fas fa-envelope"></i></div>
+                    <h4>1. Initial Inquiry</h4>
+                    <p>Buyer submits requirements via our inquiry form. We acknowledge and assign a trading manager.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-icon"><i class="fas fa-id-card"></i></div>
+                    <h4>2. Verification & KYC</h4>
+                    <p>We verify counterparties (KYC/AML), check supplier credentials and request inspection certificates if needed.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-icon"><i class="fas fa-vial"></i></div>
+                    <h4>3. Sampling & Inspection</h4>
+                    <p>Samples and third-party inspections (SGS, Intertek) arranged on request to confirm product specs before contracting.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-icon"><i class="fas fa-file-contract"></i></div>
+                    <h4>4. Contract & Terms</h4>
+                    <p>We prepare proforma invoices, contracts and agree payment terms (LC, TT, DP, SBLC) and INCOTERMS.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-icon"><i class="fas fa-university"></i></div>
+                    <h4>5. Banking & Payment</h4>
+                    <p>We coordinate secure banking procedures, escrow or confirmed LCs where required to protect both parties.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-icon"><i class="fas fa-truck"></i></div>
+                    <h4>6. Logistics & Shipping</h4>
+                    <p>Organize transport, customs clearance and provide full shipping documentation (B/L, COA, SDS).</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="process-icon"><i class="fas fa-check-circle"></i></div>
+                    <h4>7. Delivery & Handover</h4>
+                    <p>Final delivery, release of documents and confirmation of acceptance; follow-up support after sale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why choose us -->
+    <section class="section" style="background:var(--light-gray);">
+        <div class="container">
+            <h2 class="section-title">Why Work With Websutech</h2>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1rem; margin-top:1rem;">
+                <div class="feature">
+                    <h4>Verified Suppliers</h4>
+                    <p>All suppliers undergo due diligence and quality checks.</p>
+                </div>
+                <div class="feature">
+                    <h4>Documented Process</h4>
+                    <p>Standardized steps reduce risk and speed up transactions.</p>
+                </div>
+                <div class="feature">
+                    <h4>Third‑party Inspection</h4>
+                    <p>We coordinate inspections and testing by trusted inspection houses.</p>
+                </div>
+                <div class="feature">
+                    <h4>Logistics & Insurance</h4>
+                    <p>Trusted logistics partners and cargo insurance options available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq">
+                <h4>How long does a typical trade take?</h4>
+                <p>Timing varies by product, inspection needs and shipping, but typical turnaround is 2–8 weeks from inquiry to delivery.</p>
+
+                <h4>Can you help arrange LCs and bank guarantees?</h4>
+                <p>Yes — we coordinate with banks experienced in trade finance to ensure secure payment instruments.</p>
+
+                <h4>Do you provide inspection reports?</h4>
+                <p>Yes — we can arrange third-party inspections and provide COAs, SGS/Intertek reports as required.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Load header and footer templates
+        Promise.all([
+            fetch('templates/header.html').then(r => r.text()),
+            fetch('templates/footer.html').then(r => r.text())
+        ]).then(([header, footer]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('footer').innerHTML = footer;
+        }).catch(error => console.error('Error loading templates:', error));
+    </script>
+</body>
+</html>

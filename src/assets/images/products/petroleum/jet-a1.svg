@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="128" height="128" aria-hidden="true">
+  <rect width="64" height="64" rx="8" fill="#0d4d75" />
+  <g transform="translate(8,8)" fill="#fff">
+    <path d="M2 28 L26 16 L22 30 L46 36 L22 36 L18 50 Z" opacity="0.95" />
+    <text x="6" y="58" font-size="6" font-family="Arial" fill="#0d4d75">Jet A‑1</text>
+  </g>
+</svg>

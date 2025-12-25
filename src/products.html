@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Websutech</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="header"></div>
+    
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Global commodity portfolio with verified quality and compliance</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="products-overview">
+                <h2 class="text-center">Commodity Categories</h2>
+                <p class="text-center section-subtitle">Browse our comprehensive range of globally traded commodities</p>
+                
+                <div class="category-grid">
+                    <a href="products/petroleum/" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-gas-pump"></i>
+                        </div>
+                        <h3>Petroleum Products</h3>
+                        <p>Refined petroleum products including diesel, jet fuel, and crude oil</p>
+                        <span class="category-link">View Products <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="products/precious-metals/" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3>Precious Metals</h3>
+                        <p>Gold, silver, platinum, and other precious metals in various forms</p>
+                        <span class="category-link">View Products <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="products/diamonds/" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-diamond"></i>
+                        </div>
+                        <h3>Diamonds</h3>
+                        <p>Rough and polished diamonds, gemstones, and industrial diamonds</p>
+                        <span class="category-link">View Products <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="products/industrial/" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>Industrial Materials</h3>
+                        <p>Base metals, minerals, and industrial raw materials</p>
+                        <span class="category-link">View Products <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background: var(--light-gray);">
+        <div class="container">
+            <h2 class="text-center">Product Specifications</h2>
+            
+            <div class="specs-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Category</th>
+                            <th>Available Products</th>
+                            <th>Specifications</th>
+                            <th>Minimum Quantity</th>
+                            <th>Origin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Petroleum</td>
+                            <td>EN590, Jet A-1, D2, LPG, Crude</td>
+                            <td>Euro 5, ASTM D1655, GOST 305-82</td>
+                            <td>25,000 MT</td>
+                            <td>Middle East, Asia, Europe</td>
+                        </tr>
+                        <tr>
+                            <td>Precious Metals</td>
+                            <td>Gold, Silver, Platinum, Palladium</td>
+                            <td>99.99% purity, LBMA certified</td>
+                            <td>1 kg</td>
+                            <td>Global</td>
+                        </tr>
+                        <tr>
+                            <td>Diamonds</td>
+                            <td>Rough, Polished, Industrial</td>
+                            <td>GIA certified, Kimberley Process</td>
+                            <td>10 carats</td>
+                            <td>Africa, Canada, Russia</td>
+                        </tr>
+                        <tr>
+                            <td>Industrial</td>
+                            <td>Copper, Aluminum, Steel, Iron Ore</td>
+                            <td>LME registered, ISO standards</td>
+                            <td>500 MT</td>
+                            <td>Global</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <div id="footer"></div>
+    
+    <script src="assets/js/main.js"></script>
+    <script>
+        fetch('templates/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+        
+        fetch('templates/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+    
+    <style>
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .category-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-color), #2d3748);
+            color: white;
+        }
+        
+        .category-card:hover h3,
+        .category-card:hover p,
+        .category-card:hover .category-link {
+            color: white;
+        }
+        
+        .category-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--info-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-card:hover .category-icon {
+            background: white;
+        }
+        
+        .category-card:hover .category-icon i {
+            color: var(--primary-color);
+        }
+        
+        .category-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .category-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .category-card p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .category-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .specs-table {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: var(--light-gray);
+        }
+        
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            table {
+                font-size: 0.875rem;
+            }
+            
+            th, td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</body>
+</html>

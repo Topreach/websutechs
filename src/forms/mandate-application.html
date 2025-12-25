@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandate Application | Websutech</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo/favicon.ico">
+</head>
+<body>
+    <div id="header"></div>
+    
+    <!-- Page Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <h1><i class="fas fa-handshake"></i> Mandate Application</h1>
+            <p>Apply to become an authorized mandate holder and represent Websutech globally</p>
+        </div>
+    </section>
+    
+    <!-- Form Section -->
+    <section class="section">
+        <div class="container">
+            <div class="form-card" style="max-width: 800px; margin: 0 auto;">
+                <h2 class="form-title">Mandate Holder Application</h2>
+                <p class="form-subtitle">
+                    Join our exclusive network of authorized mandate holders. Represent Websutech 
+                    in your region and earn commissions on successful transactions.
+                </p>
+                
+                <div class="mandate-benefits" style="background: var(--light-gray); padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-star"></i> Mandate Holder Benefits
+                    </h3>
+                    <div class="benefits-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div class="benefit-item">
+                            <i class="fas fa-percentage" style="color: var(--secondary-color);"></i>
+                            <strong>Competitive Commissions</strong>
+                            <p>Earn up to 2% commission on successful deals</p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-globe" style="color: var(--secondary-color);"></i>
+                            <strong>Global Network</strong>
+                            <p>Access to worldwide buyers and sellers</p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-shield-alt" style="color: var(--secondary-color);"></i>
+                            <strong>Legal Protection</strong>
+                            <p>Full legal backing and documentation</p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-headset" style="color: var(--secondary-color);"></i>
+                            <strong>24/7 Support</strong>
+                            <p>Dedicated support team assistance</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="mandateApplicationForm" class="mandate-application-form">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName" class="form-label required">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality" class="form-label required">Nationality</label>
+                                <input type="text" id="nationality" name="nationality" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="form-label required">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label required">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address" class="form-label required">Full Address</label>
+                            <textarea id="address" name="address" class="form-textarea" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Company Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-building"></i> Company Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="companyName" class="form-label required">Company Name</label>
+                                <input type="text" id="companyName" name="companyName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="position" class="form-label required">Your Position</label>
+                                <input type="text" id="position" name="position" class="form-input" placeholder="e.g., CEO, Director, Partner" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="country" class="form-label required">Country of Operation</label>
+                                <select id="country" name="country" class="form-select" required>
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="AE">United Arab Emirates</option>
+                                    <option value="SG">Singapore</option>
+                                    <option value="IN">India</option>
+                                    <option value="CN">China</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="JP">Japan</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="BR">Brazil</option>
+                                    <option value="RU">Russia</option>
+                                    <option value="SA">Saudi Arabia</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="companyType" class="form-label">Company Type</label>
+                                <select id="companyType" name="companyType" class="form-select">
+                                    <option value="">Select Type</option>
+                                    <option value="trading">Trading Company</option>
+                                    <option value="consulting">Consulting Firm</option>
+                                    <option value="brokerage">Brokerage House</option>
+                                    <option value="individual">Individual Trader</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="companyDescription" class="form-label">Company Description</label>
+                            <textarea id="companyDescription" name="companyDescription" class="form-textarea" 
+                                placeholder="Brief description of your company's activities and focus areas"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience & Expertise -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-chart-line"></i> Experience & Expertise</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="yearsExperience" class="form-label required">Years of Experience in Commodity Trading</label>
+                                <select id="yearsExperience" name="yearsExperience" class="form-select" required>
+                                    <option value="">Select Experience</option>
+                                    <option value="1-2">1-2 years</option>
+                                    <option value="3-5">3-5 years</option>
+                                    <option value="6-10">6-10 years</option>
+                                    <option value="11-15">11-15 years</option>
+                                    <option value="15+">15+ years</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="specialization" class="form-label">Area of Specialization</label>
+                                <select id="specialization" name="specialization" class="form-select">
+                                    <option value="">Select Specialization</option>
+                                    <option value="petroleum">Petroleum Products</option>
+                                    <option value="metals">Precious Metals</option>
+                                    <option value="diamonds">Diamonds</option>
+                                    <option value="industrial">Industrial Materials</option>
+                                    <option value="multiple">Multiple Categories</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experience" class="form-label required">Detailed Experience</label>
+                            <textarea id="experience" name="experience" class="form-textarea" 
+                                placeholder="Describe your experience in commodity trading, major deals, and areas of expertise" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="network" class="form-label required">Network & Connections</label>
+                            <textarea id="network" name="network" class="form-textarea" 
+                                placeholder="Describe your network of buyers, sellers, and industry connections" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- References & Credentials -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-certificate"></i> References & Credentials</h3>
+                        
+                        <div class="form-group">
+                            <label for="references" class="form-label required">Professional References</label>
+                            <textarea id="references" name="references" class="form-textarea" 
+                                placeholder="Provide at least 2 professional references with contact information" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="licenses" class="form-label">Professional Licenses</label>
+                                <input type="text" id="licenses" name="licenses" class="form-input" 
+                                    placeholder="Any relevant trading or business licenses">
+                            </div>
+                            <div class="form-group">
+                                <label for="certifications" class="form-label">Certifications</label>
+                                <input type="text" id="certifications" name="certifications" class="form-input" 
+                                    placeholder="Professional certifications or qualifications">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bankReferences" class="form-label">Bank References</label>
+                            <textarea id="bankReferences" name="bankReferences" class="form-textarea" 
+                                placeholder="Banking relationships and references (optional but preferred)"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Commitment & Terms -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-handshake"></i> Commitment & Terms</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expectedVolume" class="form-label">Expected Monthly Volume</label>
+                                <select id="expectedVolume" name="expectedVolume" class="form-select">
+                                    <option value="">Select Volume</option>
+                                    <option value="1-10M">$1-10 Million</option>
+                                    <option value="10-50M">$10-50 Million</option>
+                                    <option value="50-100M">$50-100 Million</option>
+                                    <option value="100M+">$100+ Million</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="availability" class="form-label">Availability</label>
+                                <select id="availability" name="availability" class="form-select">
+                                    <option value="">Select Availability</option>
+                                    <option value="full-time">Full-time</option>
+                                    <option value="part-time">Part-time</option>
+                                    <option value="project-based">Project-based</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="motivation" class="form-label">Why do you want to become a Websutech mandate holder?</label>
+                            <textarea id="motivation" name="motivation" class="form-textarea" 
+                                placeholder="Explain your motivation and how you can contribute to our network"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additionalInfo" class="form-label">Additional Information</label>
+                            <textarea id="additionalInfo" name="additionalInfo" class="form-textarea" 
+                                placeholder="Any additional information you'd like to share"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Legal Agreement -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-shield-alt"></i> Legal Agreement</h3>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="ndaAgreed" name="ndaAgreed" required>
+                            <label for="ndaAgreed">
+                                I agree to sign a comprehensive Non-Disclosure Agreement (NDA) and maintain strict confidentiality.
+                            </label>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="exclusivityAgreed" name="exclusivityAgreed" required>
+                            <label for="exclusivityAgreed">
+                                I understand that mandate agreements may include exclusivity clauses for specific regions or products.
+                            </label>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="complianceAgreed" name="complianceAgreed" required>
+                            <label for="complianceAgreed">
+                                I confirm compliance with all applicable laws, regulations, and international trade requirements.
+                            </label>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="backgroundCheckAgreed" name="backgroundCheckAgreed" required>
+                            <label for="backgroundCheckAgreed">
+                                I consent to background checks, reference verification, and due diligence processes.
+                            </label>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="termsAgreed" name="termsAgreed" required>
+                            <label for="termsAgreed">
+                                I agree to the <a href="../terms.html" target="_blank">Terms of Service</a> and 
+                                <a href="../privacy-policy.html" target="_blank">Privacy Policy</a>.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="window.history.back()">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <div id="footer"></div>
+    
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Form submission
+        document.getElementById('mandateApplicationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                const response = await fetch('/api/inquiries/mandate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show success message
+                    alert(`Mandate application submitted successfully!\\n\\nReference ID: ${result.mandateId}\\n\\nNext Steps:\\n${result.nextSteps.join('\\n')}`);
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Redirect to thank you page or home
+                    window.location.href = '/?mandate=success';
+                } else {
+                    throw new Error(result.message || 'Application failed');
+                }
+                
+            } catch (error) {
+                console.error('Application error:', error);
+                alert('Failed to submit application. Please try again or contact us directly.');
+            } finally {
+                // Restore button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Load header and footer
+        Promise.all([
+            fetch('../templates/header.html').then(r => r.text()),
+            fetch('../templates/footer.html').then(r => r.text())
+        ]).then(([header, footer]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('footer').innerHTML = footer;
+        }).catch(error => {
+            console.log('Error loading templates:', error);
+        });
+    </script>
+    
+    <style>
+        .form-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .mandate-application-form {
+            max-width: none;
+        }
+        
+        .form-checkbox label {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .form-checkbox a {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        .form-checkbox a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .benefit-item i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .benefit-item strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .benefit-item p {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            margin: 0;
+        }
+    </style>
+</body>
+</html>

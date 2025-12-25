@@ -1,0 +1,46 @@
+{
+  "name": "websutech",
+  "version": "1.0.0",
+  "description": "Commodity Brokerage Website with Node.js Backend",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "build": "node build.js",
+    "build:css": "node build.js --css-only",
+    "build:js": "node build.js --js-only",
+    "prebuild": "echo '🔨 Preparing production build...'",
+    "postbuild": "echo '✅ Build complete!'",
+    "vercel-build": "npm install && npm run build",
+    "setup": "node setup-website.js"
+  },
+  "keywords": [
+    "commodity",
+    "brokerage",
+    "trading"
+  ],
+  "author": "Websutech",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.x"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "express-rate-limit": "^6.11.2",
+    "express-validator": "^7.3.1",
+    "helmet": "^7.2.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^7.0.11",
+    "uuid": "^9.0.1",
+    "validator": "^13.11.0",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "^2.3.0",
+    "clean-css": "^5.3.3",
+    "nodemon": "^3.0.1",
+    "terser": "^5.26.0"
+  }
+}
