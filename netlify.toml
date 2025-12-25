@@ -1,22 +1,30 @@
 [build]
   publish = "src"
-  command = "# No build needed for static site"
+  functions = "netlify/functions"
 
-[build.environment]
-  NODE_VERSION = "18"
+[dev]
+  publish = "src"
+  functions = "netlify/functions"
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  from = "/api/contact/submit"
+  to = "/.netlify/functions/contact"
+  status = 200
+
+[[redirects]]
+  from = "/api/inquiries/buyer"
+  to = "/.netlify/functions/buyer-inquiry"
+  status = 200
+
+[[redirects]]
+  from = "/api/inquiries/seller"
+  to = "/.netlify/functions/seller-inquiry"
   status = 200
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[functions]
-  directory = "netlify/functions"
 
 [[headers]]
   for = "/*"

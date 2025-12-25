@@ -131,9 +131,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     const data = Object.fromEntries(formData);
                     
                     // Determine API endpoint based on form ID or action
-                    let endpoint = '/api/contact/submit';
-                    if (this.id === 'buyerInquiryForm') endpoint = '/api/inquiries/buyer';
-                    if (this.id === 'sellerInquiryForm') endpoint = '/api/inquiries/seller';
+                    let endpoint = '/.netlify/functions/contact';
+                    if (this.id === 'buyerInquiryForm') endpoint = '/.netlify/functions/buyer-inquiry';
+                    if (this.id === 'sellerInquiryForm') endpoint = '/.netlify/functions/seller-inquiry';
                     
                     const response = await fetch(endpoint, {
                         method: 'POST',
@@ -392,9 +392,10 @@ function closeProductModal() {
 
 async function testAPI() {
     try {
-        const response = await fetch('/api/health');
-        const data = await response.json();
-        console.log('✅ API Health:', data);
+        const response = await fetch('/.netlify/functions/contact', {
+            method: 'GET'
+        });
+        console.log('✅ Netlify Functions available');
     } catch (error) {
         console.log('⚠️  API not available, running in static mode');
     }
