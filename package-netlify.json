@@ -6,6 +6,6 @@
     "build": "echo 'Static site - no build required'"
   },
   "dependencies": {
-    "nodemailer": "^7.0.11"
+    "postmark": "^4.0.0"
   }
 }

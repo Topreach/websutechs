@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+const postmark = require('postmark');
 
 exports.handler = async (event, context) => {
   const headers = {
@@ -33,27 +33,16 @@ exports.handler = async (event, context) => {
       };
     }
 
-    const transporter = nodemailer.createTransporter({
-      host: 'smtp.zoho.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: 'contact@websutech.com',
-        pass: process.env.ZOHO_APP_PASSWORD
-      },
-      tls: {
-        rejectUnauthorized: false
-      }
-    });
+    const client = new postmark.ServerClient(process.env.POSTMARK_API_TOKEN);
 
     const messageId = `CONTACT-${Date.now()}`;
 
-    await transporter.sendMail({
-      from: 'contact@websutech.com',
-      to: 'contact@websutech.com',
-      replyTo: email,
-      subject: `New Contact: ${subject}`,
-      html: `
+    await client.sendEmail({
+      From: 'contact@websutech.com',
+      To: 'contact@websutech.com',
+      ReplyTo: email,
+      Subject: `New Contact: ${subject}`,
+      HtmlBody: `
         <h2>New Contact Message</h2>
         <p><strong>ID:</strong> ${messageId}</p>
         <p><strong>From:</strong> ${name} (${email})</p>
@@ -63,7 +52,8 @@ exports.handler = async (event, context) => {
         <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
           ${message.replace(/\n/g, '<br>')}
         </div>
-      `
+      `,
+      MessageStream: 'outbound'
     });
 
     return {
@@ -77,13 +67,13 @@ exports.handler = async (event, context) => {
     };
 
   } catch (error) {
-    console.error('Contact function error:', error);
+    console.error('Postmark error:', error);
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({
         success: false,
-        error: 'Failed to send message: ' + error.message
+        error: 'Failed to send message'
       })
     };
   }
