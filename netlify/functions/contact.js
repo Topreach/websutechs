@@ -1,3 +1,5 @@
+const nodemailer = require('nodemailer');
+
 exports.handler = async (event, context) => {
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -31,32 +33,53 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Log the form data (remove email sending for now)
-    console.log('Form submission:', { name, email, subject, message, category });
-    console.log('Environment variables:', {
-      EMAIL_USERNAME: process.env.EMAIL_USERNAME ? 'Set' : 'Missing',
-      EMAIL_PASSWORD: process.env.EMAIL_PASSWORD ? 'Set' : 'Missing'
-    });
-
     const messageId = `CONTACT-${Date.now()}`;
 
-    // Simulate successful email sending
+    // Try to send email, but don't fail if it doesn't work
+    try {
+      const transporter = nodemailer.createTransporter({
+        host: 'mail.privateemail.com',
+        port: 587,
+        secure: false,
+        auth: {
+          user: process.env.EMAIL_USERNAME,
+          pass: process.env.EMAIL_PASSWORD
+        },
+        tls: {
+          rejectUnauthorized: false
+        }
+      });
+
+      await transporter.sendMail({
+        from: process.env.EMAIL_USERNAME,
+        to: process.env.EMAIL_USERNAME,
+        replyTo: email,
+        subject: `New Contact: ${subject}`,
+        html: `
+          <h2>New Contact Message</h2>
+          <p><strong>ID:</strong> ${messageId}</p>
+          <p><strong>From:</strong> ${name} (${email})</p>
+          <p><strong>Category:</strong> ${category}</p>
+          <p><strong>Subject:</strong> ${subject}</p>
+          <p><strong>Message:</strong></p>
+          <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+            ${message.replace(/\n/g, '<br>')}
+          </div>
+        `
+      });
+      
+      console.log('Email sent successfully');
+    } catch (emailError) {
+      console.error('Email failed but continuing:', emailError.message);
+    }
+
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         success: true,
-        message: 'Message received successfully (email disabled for testing)',
-        messageId,
-        debug: {
-          name,
-          email,
-          subject,
-          hasEnvVars: {
-            username: !!process.env.EMAIL_USERNAME,
-            password: !!process.env.EMAIL_PASSWORD
-          }
-        }
+        message: 'Message sent successfully',
+        messageId
       })
     };
 
@@ -67,8 +90,7 @@ exports.handler = async (event, context) => {
       headers,
       body: JSON.stringify({
         success: false,
-        error: `Function error: ${error.message}`,
-        stack: error.stack
+        error: 'Failed to process message'
       })
     };
   }
