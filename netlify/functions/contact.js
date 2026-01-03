@@ -33,21 +33,34 @@ exports.handler = async (event, context) => {
       };
     }
 
+    // Log environment variables for debugging
+    console.log('Email config:', {
+      username: process.env.EMAIL_USERNAME ? 'Set' : 'Missing',
+      password: process.env.EMAIL_PASSWORD ? 'Set' : 'Missing'
+    });
+
     const transporter = nodemailer.createTransporter({
       host: 'mail.privateemail.com',
       port: 587,
-      secure: false,
+      secure: false, // true for 465, false for other ports
       auth: {
         user: process.env.EMAIL_USERNAME,
         pass: process.env.EMAIL_PASSWORD
+      },
+      tls: {
+        rejectUnauthorized: false
       }
     });
 
+    // Test connection
+    await transporter.verify();
+    console.log('SMTP connection verified');
+
     const messageId = `CONTACT-${Date.now()}`;
 
-    await transporter.sendMail({
-      from: `"ResultBroker" <${process.env.EMAIL_USERNAME}>`,
-      to: 'contact@resultbroker.com',
+    const mailOptions = {
+      from: process.env.EMAIL_USERNAME,
+      to: process.env.EMAIL_USERNAME, // Send to same email
       replyTo: email,
       subject: `New Contact: ${subject}`,
       html: `
@@ -61,7 +74,10 @@ exports.handler = async (event, context) => {
           ${message.replace(/\n/g, '<br>')}
         </div>
       `
-    });
+    };
+
+    const result = await transporter.sendMail(mailOptions);
+    console.log('Email sent:', result.messageId);
 
     return {
       statusCode: 200,
@@ -80,7 +96,7 @@ exports.handler = async (event, context) => {
       headers,
       body: JSON.stringify({
         success: false,
-        error: 'Failed to send message'
+        error: `Failed to send message: ${error.message}`
       })
     };
   }
