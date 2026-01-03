@@ -45,7 +45,7 @@ exports.handler = async (event, context) => {
       try {
         console.log('Attempting to send email...');
         
-        const transporter = nodemailer.createTransporter({
+        const transporter = nodemailer.createTransport({
           host: 'mail.privateemail.com',
           port: 587,
           secure: false,

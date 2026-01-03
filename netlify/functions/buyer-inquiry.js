@@ -47,7 +47,7 @@ exports.handler = async (event, context) => {
       };
     }
 
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: 'mail.privateemail.com',
       port: 587,
       secure: false,
