@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | ResultBroker</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="header"></div>
+    
+    <section class="section">
+        <div class="container">
+            <div class="thank-you-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>Thank You!</h1>
+                <p>Your message has been successfully submitted. Our team will review your inquiry and respond within 24 hours.</p>
+                
+                <div class="next-steps">
+                    <h3>What happens next?</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> You'll receive a confirmation email shortly</li>
+                        <li><i class="fas fa-user-tie"></i> Our team will review your inquiry</li>
+                        <li><i class="fas fa-phone"></i> We'll contact you within 24 hours</li>
+                        <li><i class="fas fa-handshake"></i> Begin your trading journey with us</li>
+                    </ul>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="/" class="btn btn-primary">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                    <a href="products.html" class="btn btn-outline">
+                        <i class="fas fa-boxes"></i> View Products
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div id="footer"></div>
+    
+    <script src="assets/js/main.js"></script>
+    <script>
+        fetch('templates/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+        
+        fetch('templates/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+    
+    <style>
+        .thank-you-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success-color);
+            margin-bottom: 2rem;
+        }
+        
+        .thank-you-content h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .thank-you-content p {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .next-steps {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .next-steps h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .next-steps li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .next-steps li:last-child {
+            border-bottom: none;
+        }
+        
+        .next-steps i {
+            color: var(--secondary-color);
+            width: 20px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</body>
+</html>
