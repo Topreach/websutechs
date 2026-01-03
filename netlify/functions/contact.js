@@ -86,6 +86,45 @@ exports.handler = async (event, context) => {
         console.log('Sending email to:', process.env.EMAIL_USERNAME);
         const result = await transporter.sendMail(mailOptions);
         console.log('Email sent successfully:', result.messageId);
+        
+        // Send auto-reply to customer
+        await transporter.sendMail({
+          from: process.env.EMAIL_USERNAME,
+          to: email,
+          subject: 'Thank you for contacting ResultBroker',
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <h2 style="color: #1a365d;">Thank You for Your Inquiry</h2>
+              <p>Dear ${name},</p>
+              <p>Thank you for contacting ResultBroker. We have received your message and will respond within 24 hours.</p>
+              
+              <div style="background: #f7fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3 style="color: #1a365d; margin-top: 0;">Your Message Details:</h3>
+                <p><strong>Reference ID:</strong> ${messageId}</p>
+                <p><strong>Subject:</strong> ${subject}</p>
+                <p><strong>Category:</strong> ${category}</p>
+              </div>
+              
+              <h3 style="color: #1a365d;">What happens next?</h3>
+              <ul>
+                <li>Our team will review your inquiry</li>
+                <li>You'll receive a detailed response within 24 hours</li>
+                <li>For urgent matters, call +1 (555) 123-4567</li>
+              </ul>
+              
+              <p>Best regards,<br>
+              <strong>ResultBroker Team</strong><br>
+              Global Commodity Trading Solutions</p>
+              
+              <hr style="margin: 30px 0; border: none; border-top: 1px solid #e2e8f0;">
+              <p style="font-size: 12px; color: #718096;">
+                This is an automated message. Please do not reply to this email.
+                For immediate assistance, contact us at contact@resultbroker.com
+              </p>
+            </div>
+          `
+        });
+        
         emailStatus = 'sent';
         
       } catch (emailErr) {
