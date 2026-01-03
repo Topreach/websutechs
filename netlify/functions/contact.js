@@ -34,43 +34,65 @@ exports.handler = async (event, context) => {
     }
 
     const messageId = `CONTACT-${Date.now()}`;
+    let emailStatus = 'not_attempted';
+    let emailError = null;
 
-    // Try to send email, but don't fail if it doesn't work
-    try {
-      const transporter = nodemailer.createTransporter({
-        host: 'mail.privateemail.com',
-        port: 587,
-        secure: false,
-        auth: {
-          user: process.env.EMAIL_USERNAME,
-          pass: process.env.EMAIL_PASSWORD
-        },
-        tls: {
-          rejectUnauthorized: false
-        }
-      });
+    // Check if email credentials are available
+    if (!process.env.EMAIL_USERNAME || !process.env.EMAIL_PASSWORD) {
+      console.log('Email credentials missing');
+      emailStatus = 'credentials_missing';
+    } else {
+      try {
+        console.log('Attempting to send email...');
+        
+        const transporter = nodemailer.createTransporter({
+          host: 'mail.privateemail.com',
+          port: 587,
+          secure: false,
+          auth: {
+            user: process.env.EMAIL_USERNAME,
+            pass: process.env.EMAIL_PASSWORD
+          },
+          tls: {
+            rejectUnauthorized: false
+          },
+          debug: true,
+          logger: true
+        });
 
-      await transporter.sendMail({
-        from: process.env.EMAIL_USERNAME,
-        to: process.env.EMAIL_USERNAME,
-        replyTo: email,
-        subject: `New Contact: ${subject}`,
-        html: `
-          <h2>New Contact Message</h2>
-          <p><strong>ID:</strong> ${messageId}</p>
-          <p><strong>From:</strong> ${name} (${email})</p>
-          <p><strong>Category:</strong> ${category}</p>
-          <p><strong>Subject:</strong> ${subject}</p>
-          <p><strong>Message:</strong></p>
-          <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
-            ${message.replace(/\n/g, '<br>')}
-          </div>
-        `
-      });
-      
-      console.log('Email sent successfully');
-    } catch (emailError) {
-      console.error('Email failed but continuing:', emailError.message);
+        // Verify connection first
+        console.log('Verifying SMTP connection...');
+        await transporter.verify();
+        console.log('SMTP connection verified');
+
+        const mailOptions = {
+          from: process.env.EMAIL_USERNAME,
+          to: process.env.EMAIL_USERNAME,
+          replyTo: email,
+          subject: `New Contact: ${subject}`,
+          html: `
+            <h2>New Contact Message</h2>
+            <p><strong>ID:</strong> ${messageId}</p>
+            <p><strong>From:</strong> ${name} (${email})</p>
+            <p><strong>Category:</strong> ${category}</p>
+            <p><strong>Subject:</strong> ${subject}</p>
+            <p><strong>Message:</strong></p>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+              ${message.replace(/\n/g, '<br>')}
+            </div>
+          `
+        };
+
+        console.log('Sending email to:', process.env.EMAIL_USERNAME);
+        const result = await transporter.sendMail(mailOptions);
+        console.log('Email sent successfully:', result.messageId);
+        emailStatus = 'sent';
+        
+      } catch (emailErr) {
+        console.error('Email sending failed:', emailErr);
+        emailStatus = 'failed';
+        emailError = emailErr.message;
+      }
     }
 
     return {
@@ -78,8 +100,10 @@ exports.handler = async (event, context) => {
       headers,
       body: JSON.stringify({
         success: true,
-        message: 'Message sent successfully',
-        messageId
+        message: 'Message received successfully',
+        messageId,
+        emailStatus,
+        emailError: emailError || undefined
       })
     };
 
