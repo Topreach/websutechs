@@ -1,4 +1,4 @@
-# Websutech - Commodity Brokerage Website
+# ResultBroker - Commodity Brokerage Website
 
 A professional commodity brokerage website for trading petroleum, precious metals, diamonds, and industrial materials.
 
@@ -14,7 +14,7 @@ A professional commodity brokerage website for trading petroleum, precious metal
 ## Project Structure
 
 ```
-websutech/
+resultbroker/
 ├── server.js                  # Main Express server
 ├── src/                       # Frontend source files
 ├── backend/                   # Backend API and logic
@@ -103,8 +103,8 @@ Required variables in `.env`:
 ```
 NODE_ENV=development
 PORT=3000
-EMAIL_FROM=noreply@websutech.com
-ADMIN_EMAIL=admin@websutech.com
+EMAIL_FROM=noreply@resultbroker.org
+ADMIN_EMAIL=admin@resultbroker.org
 # Add database and email service variables
 ```
 
@@ -151,12 +151,12 @@ This project is proprietary and confidential.
 
 ## Support
 
-For support, email: support@websutech.com
+For support, email: support@resultbroker.org
 
 ---
 
-**Websutech** - Global Commodity Trading Solutions
+**ResultBroker** - Global Commodity Trading Solutions
 ```
 
-All rights reserved. © 2025 Websutech
+All rights reserved. © 2025 ResultBroker
 ```

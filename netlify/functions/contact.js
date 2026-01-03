@@ -1,4 +1,4 @@
-const postmark = require('postmark');
+const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
   const headers = {
@@ -33,16 +33,24 @@ exports.handler = async (event, context) => {
       };
     }
 
-    const client = new postmark.ServerClient(process.env.POSTMARK_API_TOKEN);
+    const transporter = nodemailer.createTransporter({
+      host: 'mail.privateemail.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD
+      }
+    });
 
     const messageId = `CONTACT-${Date.now()}`;
 
-    await client.sendEmail({
-      From: 'contact@websutech.com',
-      To: 'contact@websutech.com',
-      ReplyTo: email,
-      Subject: `New Contact: ${subject}`,
-      HtmlBody: `
+    await transporter.sendMail({
+      from: `"ResultBroker" <${process.env.EMAIL_USERNAME}>`,
+      to: 'contact@resultbroker.com',
+      replyTo: email,
+      subject: `New Contact: ${subject}`,
+      html: `
         <h2>New Contact Message</h2>
         <p><strong>ID:</strong> ${messageId}</p>
         <p><strong>From:</strong> ${name} (${email})</p>
@@ -52,8 +60,7 @@ exports.handler = async (event, context) => {
         <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
           ${message.replace(/\n/g, '<br>')}
         </div>
-      `,
-      MessageStream: 'outbound'
+      `
     });
 
     return {
@@ -67,7 +74,7 @@ exports.handler = async (event, context) => {
     };
 
   } catch (error) {
-    console.error('Postmark error:', error);
+    console.error('Contact function error:', error);
     return {
       statusCode: 500,
       headers,

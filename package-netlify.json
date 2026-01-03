@@ -1,11 +1,11 @@
 {
-  "name": "websutech",
+  "name": "resultbroker",
   "version": "1.0.0",
   "description": "Commodity Brokerage Website for Netlify",
   "scripts": {
     "build": "echo 'Static site - no build required'"
   },
   "dependencies": {
-    "postmark": "^4.0.0"
+    "nodemailer": "^6.9.0"
   }
 }

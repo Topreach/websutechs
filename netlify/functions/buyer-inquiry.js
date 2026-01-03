@@ -1,9 +1,20 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+  };
+
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers, body: '' };
+  }
+
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers,
       body: JSON.stringify({ error: 'Method not allowed' })
     };
   }
@@ -28,6 +39,7 @@ exports.handler = async (event, context) => {
     if (!companyName || !contactPerson || !email || !specificProduct || !quantity) {
       return {
         statusCode: 400,
+        headers,
         body: JSON.stringify({ 
           success: false, 
           error: 'Required fields missing' 
@@ -36,20 +48,21 @@ exports.handler = async (event, context) => {
     }
 
     const transporter = nodemailer.createTransporter({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: process.env.SMTP_SECURE === 'true',
+      host: 'mail.privateemail.com',
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD
       }
     });
 
     const inquiryId = `BUY-${Date.now()}`;
 
     await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
-      to: process.env.ADMIN_EMAIL,
+      from: `"ResultBroker" <${process.env.EMAIL_USERNAME}>`,
+      to: 'contact@resultbroker.com',
+      replyTo: email,
       subject: `New Buyer Inquiry: ${specificProduct} - ${inquiryId}`,
       html: `
         <h2>New Buyer Inquiry</h2>
@@ -71,6 +84,7 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 200,
+      headers,
       body: JSON.stringify({
         success: true,
         message: 'Buyer inquiry submitted successfully',
@@ -85,8 +99,10 @@ exports.handler = async (event, context) => {
     };
 
   } catch (error) {
+    console.error('Buyer inquiry error:', error);
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({
         success: false,
         error: 'Failed to submit inquiry'
